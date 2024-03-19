@@ -1,0 +1,13 @@
+services:
+    sftp:
+        image: atmoz/sftp
+        volumes:
+            - ./mnt:/home/
+            - ./scripts:/etc/sftp.d/
+        ports:
+            - "2222:22"
+        environment:
+            SFTP_USERS: client-production:pass:::/. client-staging:pass:::/. cxn:pass:::/.
+        cap_add:
+            - SYS_ADMIN
+        
